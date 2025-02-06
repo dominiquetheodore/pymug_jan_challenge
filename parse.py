@@ -1,3 +1,5 @@
+# a simple JSON parser
+
 import sys
 import re
 
@@ -7,12 +9,8 @@ token_patterns = [
     ('STRING', r'"(?:[^"\\]|\\.)*"'),
     ('LCURLY', r'\{'),
     ('RCURLY', r'\}'),
-    ('LBRACKET', r'\['),
-    ('RBRACKET', r'\]'),
     ('COMMA', r','),
     ('COLON', r':'),
-    ('TRUE', r'true'),
-    ('FALSE', r'false'),
     ('NULL', r'null'),
     ('WHITESPACE', r'\s+')
 ]
