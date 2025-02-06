@@ -60,11 +60,12 @@ class Parser:
         else:
             self.error(f"Expected {token_type}")
 
-    # parse object of the form { ' }
+    # parse object of the form { "k": "v" }
     def parse_object(self):
         self.eat('LCURLY')
         result = {}
-        
+
+        # empty object
         if self.current_token.type == 'RCURLY':
             self.eat('RCURLY')
             return result
@@ -83,6 +84,7 @@ class Parser:
         
         return result
     
+    # parse primitive value (only string and integer implemented)
     def parse_value(self):
         token = self.current_token
 
@@ -112,7 +114,8 @@ class Parser:
         raise Exception(f"Parse error: {message}")
 
 if __name__ == "__main__":
-    text = '{"k1": "v1", "k2": "v2"}'
+    text = ' {"k1":"v1","k2":"v2","id":2}'
+
     lexer = Lexer(text)
     parser = Parser(lexer)
     try:
